@@ -55,11 +55,7 @@ export default function NavIcons({ openWindow }: NavIconProps) {
         className="flex flex-col items-center space-y-2.5 hover:opacity-75 transition-opacity cursor-pointer"
         onClick={() => openWindow("contact")}
       >
-        <AtSign
-          size={50}
-          className={"hover:opacity-75 transition-opacity cursor-pointer"}
-          onClick={() => openWindow("contact")}
-        />
+        <AtSign size={50} />
         <span>contact</span>
       </div>
     </div>
