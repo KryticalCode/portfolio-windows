@@ -2,13 +2,7 @@ import { useState } from "react";
 import Window from "../components/Window";
 import AboutContent from "@/components/AboutContent";
 import Links from "@/components/Links";
-import {
-  CircleUser,
-  Link,
-  FolderCode,
-  FileQuestionMark,
-  AtSign,
-} from "lucide-react";
+import NavIcons from "@/components/NavIcons";
 
 export default function Index() {
   const [openWindows, setOpenWindows] = useState<string[]>(["home"]);
@@ -26,35 +20,7 @@ export default function Index() {
         <div className="h-full justify-center items-center flex flex-col text-center ">
           <p className=" text-3xl p-5">hi! i'm matt</p>
           <p>Aspiring web-developer and recent Computer Science graduate</p>
-
-          {/* nav icons */}
-          <div className="flex flex-wrap flex-row justify-center gap-4 mt-8">
-            <CircleUser
-              size={50}
-              className={"hover:opacity-75 transition-opacity cursor-pointer"}
-              onClick={() => openWindow("about")}
-            />
-            <Link
-              size={50}
-              className={"hover:opacity-75 transition-opacity cursor-pointer"}
-              onClick={() => openWindow("links")}
-            />
-            <FolderCode
-              size={50}
-              className={"hover:opacity-75 transition-opacity cursor-pointer"}
-              onClick={() => openWindow("projects")}
-            />
-            <FileQuestionMark
-              size={50}
-              className={"hover:opacity-75 transition-opacity cursor-pointer"}
-              onClick={() => openWindow("faq")}
-            />
-            <AtSign
-              size={50}
-              className={"hover:opacity-75 transition-opacity cursor-pointer"}
-              onClick={() => openWindow("contact")}
-            />
-          </div>
+          <NavIcons openWindow={openWindow} />
         </div>
       </Window>
 
