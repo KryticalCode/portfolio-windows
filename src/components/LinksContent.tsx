@@ -1,4 +1,4 @@
-export default function Links() {
+export default function LinksContent() {
   return (
     <div className="p-4">
       <h2>This will have my about my links</h2>

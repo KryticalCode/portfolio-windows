@@ -34,14 +34,14 @@ export default function Window({
       style={{ width, height }}
     >
       {/* Title Bar */}
-      <div className="bg-gray-600 text-white px-6 py-3 rounded-t-lg h-12 flex justify-between items-center text-sm font-medium cursor-move">
+      <div className="bg-gray-600 text-white px-6 py-3 rounded-t-lg h-13 flex justify-between items-center text-m font-medium cursor-move">
         <span>{title}</span>
         {onClose && (
           <button
             onClick={onClose}
             className="text-white hover:text-gray-300 text-lg leading-none bg-transparent border-none cursor-pointer"
           >
-            ×
+            [×]
           </button>
         )}
       </div>

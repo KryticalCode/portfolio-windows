@@ -13,13 +13,13 @@ interface NavIconProps {
 export default function NavIcons({ openWindow }: NavIconProps) {
   return (
     /* Main container for nav icons */
-    <div className="flex flex-wrap flex-row justify-center gap-4 mt-8">
+    <div className="flex flex-wrap flex-row justify-center gap-8 mt-15">
       {/* About */}
       <div
         className="flex flex-col items-center space-y-2.5 hover:opacity-75 transition-opacity cursor-pointer"
         onClick={() => openWindow("about")}
       >
-        <CircleUser size={50} />
+        <CircleUser size={55} opacity={0.6} />
         <span>about</span>
       </div>
 
@@ -28,7 +28,7 @@ export default function NavIcons({ openWindow }: NavIconProps) {
         className="flex flex-col items-center space-y-2.5 hover:opacity-75 transition-opacity cursor-pointer"
         onClick={() => openWindow("links")}
       >
-        <Link size={50} />
+        <Link size={55} opacity={0.6} />
         <span>links</span>
       </div>
 
@@ -37,7 +37,7 @@ export default function NavIcons({ openWindow }: NavIconProps) {
         className="flex flex-col items-center space-y-2.5 hover:opacity-75 transition-opacity cursor-pointer"
         onClick={() => openWindow("projects")}
       >
-        <FolderCode size={50} />
+        <FolderCode size={55} opacity={0.6} />
         <span>projects</span>
       </div>
 
@@ -46,7 +46,7 @@ export default function NavIcons({ openWindow }: NavIconProps) {
         className="flex flex-col items-center space-y-2.5 hover:opacity-75 transition-opacity cursor-pointer"
         onClick={() => openWindow("faq")}
       >
-        <FileQuestionMark size={50} />
+        <FileQuestionMark size={55} opacity={0.6} />
         <span>faq</span>
       </div>
 
@@ -55,7 +55,7 @@ export default function NavIcons({ openWindow }: NavIconProps) {
         className="flex flex-col items-center space-y-2.5 hover:opacity-75 transition-opacity cursor-pointer"
         onClick={() => openWindow("contact")}
       >
-        <AtSign size={50} />
+        <AtSign size={55} opacity={0.6} />
         <span>contact</span>
       </div>
     </div>

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import Window from "../components/Window";
 import AboutContent from "@/components/AboutContent";
-import Links from "@/components/Links";
+import LinksContent from "@/components/LinksContent";
 import NavIcons from "@/components/NavIcons";
+import ProjectsContent from "@/components/ProjectsContent";
+import FAQContent from "@/components/FAQContent";
+import ContactContent from "@/components/ContactContent";
 
 export default function Index() {
   const [openWindows, setOpenWindows] = useState<string[]>(["home"]);
@@ -18,11 +21,18 @@ export default function Index() {
       {/* main home window */}
       <Window title="home" width="50rem" height="35rem" isMovable={false}>
         <div className="h-full justify-center items-center flex flex-col text-center ">
-          <p className=" text-3xl p-5">hi! i'm matt</p>
+          <div className=" p-5 flex flex-row gap-6  ">
+            <span className="text-6xl">hi!</span>
+            <span className="text-amber-500 text-6xl">i'm matt</span>
+          </div>
           <p>Aspiring web-developer and recent Computer Science graduate</p>
           <NavIcons openWindow={openWindow} />
         </div>
       </Window>
+
+      {/* ------------------------------------ */}
+      {/* Open windows rendering */}
+      {/* ------------------------------------ */}
 
       {/* About window */}
       {openWindows.includes("about") && (
@@ -50,7 +60,52 @@ export default function Index() {
             setOpenWindows(openWindows.filter((w) => w !== "links"))
           }
         >
-          <Links />
+          <LinksContent />
+        </Window>
+      )}
+
+      {/* Projects window */}
+      {openWindows.includes("projects") && (
+        <Window
+          title="projects"
+          width="40rem"
+          height="35rem"
+          isMovable={true}
+          onClose={() =>
+            setOpenWindows(openWindows.filter((w) => w !== "projects"))
+          }
+        >
+          <ProjectsContent />
+        </Window>
+      )}
+
+      {/* FAQ window */}
+      {openWindows.includes("faq") && (
+        <Window
+          title="faq"
+          width="40rem"
+          height="35rem"
+          isMovable={true}
+          onClose={() => {
+            setOpenWindows(openWindows.filter((w) => w !== "faq"));
+          }}
+        >
+          <FAQContent />
+        </Window>
+      )}
+
+      {/* Contact window */}
+      {openWindows.includes("contact") && (
+        <Window
+          title="contact"
+          width="40rem"
+          height="35rem"
+          isMovable={true}
+          onClose={() => {
+            setOpenWindows(openWindows.filter((w) => w !== "contact"));
+          }}
+        >
+          <ContactContent />
         </Window>
       )}
     </div>
