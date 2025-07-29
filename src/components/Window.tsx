@@ -8,6 +8,7 @@ interface WindowProps {
   height?: string;
   isMovable?: boolean;
   onClose?: () => void;
+  expandContent?: boolean; // New prop for content expansion
 }
 
 export default function Window({
@@ -17,6 +18,7 @@ export default function Window({
   height = "20rem",
   isMovable = false,
   onClose,
+  expandContent = false, // Default to false
 }: WindowProps) {
   const nodeRef = useRef(null);
 
@@ -47,7 +49,15 @@ export default function Window({
       </div>
 
       {/* Content */}
-      <div className="flex-1 p-4 overflow-auto">{children}</div>
+      {/* Will keep flex-col for consistent layout, can override with specific styles in child components
+      if required */}
+      <div
+        className={`flex flex-col p-6 bg-white ${
+          expandContent ? "flex-1" : ""
+        }`}
+      >
+        {children}
+      </div>
     </div>
   );
 

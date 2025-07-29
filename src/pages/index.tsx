@@ -19,9 +19,15 @@ export default function Index() {
   return (
     <div>
       {/* main home window */}
-      <Window title="home" width="50rem" height="35rem" isMovable={false}>
-        <div className="h-full justify-center items-center flex flex-col text-center ">
-          <div className=" p-5 flex flex-row gap-6  ">
+      <Window
+        title="home"
+        width="50rem"
+        height="35rem"
+        isMovable={false}
+        expandContent={true}
+      >
+        <div className="flex-1 h-full justify-center items-center flex flex-col text-center">
+          <div className=" p-5 flex flex-row gap-6 items-center ">
             <span className="text-6xl">hi!</span>
             <span className="text-amber-500 text-6xl">i'm matt</span>
           </div>
@@ -38,7 +44,7 @@ export default function Index() {
       {openWindows.includes("about") && (
         <Window
           title="about"
-          width="40rem"
+          width="50rem"
           height="35rem"
           isMovable={true}
           onClose={() =>
