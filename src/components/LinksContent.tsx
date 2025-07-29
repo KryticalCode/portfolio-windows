@@ -1,12 +1,31 @@
 export default function LinksContent() {
   return (
-    <div className="p-4">
-      <h2>This will have my about my links</h2>
-      <p>
-        More content will be added soon....
-        <br />
-        Work links / pictures / descriptions / social media links, etc.
-      </p>
+    <div className="p-4 grid grid-cols-4 justify-items-center">
+      <a
+        href="https://github.com/KryticalCode/"
+        className="flex flex-col items-center space-y-2.5"
+        target="_blank"
+      >
+        <img src="/github-logo.png" alt="GitHub Logo" className="w-10 h-10" />
+        <span>GitHub</span>
+      </a>
+
+      <a
+        href="https://www.linkedin.com/"
+        className="flex flex-col items-center space-y-2.5"
+        target="_blank"
+      >
+        <img src="/linkedin.png" alt="LinkedIn Logo" className="w-10 h-10" />
+        <span>LinkedIn</span>
+      </a>
+      <a
+        href="https://www.discord.com/"
+        className="flex flex-col items-center space-y-2.5"
+        target="_blank"
+      >
+        <img src="/discordlogo.png" alt="Discord Logo" className="w-10 h-10" />
+        <span>Discord</span>
+      </a>
     </div>
   );
 }
