@@ -52,7 +52,7 @@ export default function Window({
       {/* Will keep flex-col for consistent layout, can override with specific styles in child components
       if required */}
       <div
-        className={`flex flex-col p-6 bg-white ${
+        className={`flex flex-col p-6 bg-white overflow-y-auto ${
           expandContent ? "flex-1" : ""
         }`}
       >

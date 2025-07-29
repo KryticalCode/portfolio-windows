@@ -77,8 +77,8 @@ export default function Index() {
       {openWindows.includes("projects") && (
         <Window
           title="projects"
-          width="60rem"
-          height="35rem"
+          width="75rem"
+          height="45rem"
           isMovable={true}
           onClose={() =>
             setOpenWindows(openWindows.filter((w) => w !== "projects"))
