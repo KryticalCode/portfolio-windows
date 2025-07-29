@@ -45,7 +45,7 @@ export default function Index() {
         <Window
           title="about"
           width="50rem"
-          height="35rem"
+          height="40rem"
           isMovable={true}
           onClose={() =>
             setOpenWindows(openWindows.filter((w) => w !== "about"))
@@ -59,8 +59,8 @@ export default function Index() {
       {openWindows.includes("links") && (
         <Window
           title="links"
-          width="40rem"
-          height="35rem"
+          width="30rem"
+          height="30rem"
           isMovable={true}
           expandContent={true}
           onClose={() =>
@@ -77,7 +77,7 @@ export default function Index() {
       {openWindows.includes("projects") && (
         <Window
           title="projects"
-          width="40rem"
+          width="60rem"
           height="35rem"
           isMovable={true}
           onClose={() =>
