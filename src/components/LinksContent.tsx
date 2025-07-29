@@ -1,6 +1,6 @@
 export default function LinksContent() {
   return (
-    <div className="p-4 grid grid-cols-4 justify-items-center">
+    <div className="p-4 grid grid-cols-3 justify-items-center gap-15">
       <a
         href="https://github.com/KryticalCode/"
         className="flex flex-col items-center space-y-2.5"
@@ -26,6 +26,11 @@ export default function LinksContent() {
         <img src="/discordlogo.png" alt="Discord Logo" className="w-10 h-10" />
         <span>Discord</span>
       </a>
+      <span className="text-sm text-gray-500 col-span-3 text-center">
+        [Links will open in a new tab]
+        <br />
+        <span>more to add...</span>
+      </span>
     </div>
   );
 }

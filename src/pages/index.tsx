@@ -62,11 +62,14 @@ export default function Index() {
           width="40rem"
           height="35rem"
           isMovable={true}
+          expandContent={true}
           onClose={() =>
             setOpenWindows(openWindows.filter((w) => w !== "links"))
           }
         >
-          <LinksContent />
+          <div className="flex justify-center items-center h-full">
+            <LinksContent />
+          </div>
         </Window>
       )}
 
