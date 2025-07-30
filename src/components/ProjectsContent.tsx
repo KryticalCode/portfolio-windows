@@ -20,7 +20,7 @@ export default function ProjectsContent() {
         <div className="flex flex-row flex-wrap gap-8 mt-6">
           <a
             href="https://github.com/rmit-computing-technologies/Hologame"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300"
+            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -35,7 +35,7 @@ export default function ProjectsContent() {
           </a>
           <a
             href="https://github.com/rmit-fsd-2024-s1/s3625089-s3948914-a2"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300"
+            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -69,7 +69,7 @@ export default function ProjectsContent() {
         <div className="flex flex-row flex-wrap gap-8 mt-6">
           <a
             href="https://www.github.com/KryticalCode/"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300"
+            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -84,7 +84,7 @@ export default function ProjectsContent() {
           </a>
           <a
             href="https://www.github.com/KryticalCode/portfolio-website"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300"
+            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -99,7 +99,7 @@ export default function ProjectsContent() {
           </a>
           <a
             href="https://github.com/KryticalCode"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300"
+            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -114,7 +114,7 @@ export default function ProjectsContent() {
           </a>
           <a
             href="https://github.com/KryticalCode"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300"
+            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-200"
             target="_blank"
             rel="noopener noreferrer"
           >

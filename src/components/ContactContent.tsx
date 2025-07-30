@@ -3,7 +3,8 @@ export default function ContactContent() {
     <div className="p-4">
       <h2 className="text-center text-2xl font-semibold">mail time!</h2>
       <p className="text-center font-light p-4">
-        The best way to reach me is via email, thanks!{" "}
+        thanks for having a look at my website! The best way to reach me is via
+        email, thanks!{" "}
         <a
           href="mailto:mattcirona@gmail.com"
           className="text-amber-500 hover:text-amber-600 underline"
