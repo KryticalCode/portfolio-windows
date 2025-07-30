@@ -2,16 +2,28 @@ export default function ContactContent() {
   return (
     <div className="p-4">
       <h2 className="text-center text-2xl font-semibold">mail time!</h2>
+
+      {/* First section - thanks message */}
       <p className="text-center font-light p-4">
-        thanks for having a look at my website! The best way to reach me is via
-        email, thanks!{" "}
+        Thanks for having a look at my website!
+      </p>
+
+      {/* Second section - contact info */}
+      <p className="text-center font-light px-4 pb-4">
+        The best way to reach me is via email.
+      </p>
+
+      {/* Email section */}
+      <p className="text-center font-light px-4 pb-4">
+        Email me at:{" "}
         <a
           href="mailto:mattcirona@gmail.com"
           className="text-amber-500 hover:text-amber-600 underline"
         >
-          email:mattcirona@gmail.com
+          mattcirona@gmail.com
         </a>
       </p>
+
       <img
         src="/garfield-sleeping.jpeg"
         alt="Garfield sleeping"
