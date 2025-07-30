@@ -1,11 +1,18 @@
-export default function FAQContent() {
+import FAQItem from "./FAQItem";
+
+interface FAQContentProps {
+  faqItems: {
+    question: string;
+    answer: string;
+  }[];
+}
+
+export default function FAQContent({ faqItems }: FAQContentProps) {
   return (
-    <div className="w-full h-full overflow-x-hiden space-y-1.5">
-      <h2>This will have my FAQ content... to be determined</h2>
-      <p>
-        Testing layout what this will look like when I add more context to this
-        section.
-      </p>
+    <div className="w-full h-full overflow-x-hidden space-y-1.5 p-4">
+      {faqItems.map((faq, index) => (
+        <FAQItem key={index} question={faq.question} answer={faq.answer} />
+      ))}
     </div>
   );
 }

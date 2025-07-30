@@ -6,6 +6,7 @@ import NavIcons from "@/components/NavIcons";
 import ProjectsContent from "@/components/ProjectsContent";
 import FAQContent from "@/components/FAQContent";
 import ContactContent from "@/components/ContactContent";
+import { faqData } from "@/data/FAQData";
 
 export default function Index() {
   const [openWindows, setOpenWindows] = useState<string[]>(["home"]);
@@ -99,7 +100,7 @@ export default function Index() {
             setOpenWindows(openWindows.filter((w) => w !== "faq"));
           }}
         >
-          <FAQContent />
+          <FAQContent faqItems={faqData} />
         </Window>
       )}
 
