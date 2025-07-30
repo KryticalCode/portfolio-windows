@@ -11,7 +11,7 @@ export default function AboutContent() {
         <p className="pl-10">
           <b>Matt</b>
           <br />
-          Amatuer web-developer, pc enthusiast, video game enjoyer
+          Amatuer web-developer, pc and video game enthusiast
           <br />
           Forklift operator / timber-yard worker at Bunnings Warehouse
         </p>
