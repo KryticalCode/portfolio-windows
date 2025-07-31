@@ -68,7 +68,7 @@ export default function ProjectsContent() {
         {/* personal project cards */}
         <div className="flex flex-row flex-wrap gap-8 mt-6">
           <a
-            href="https://www.github.com/KryticalCode/"
+            href="https://todo-app-two-psi-89.vercel.app/"
             className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
             target="_blank"
             rel="noopener noreferrer"
