@@ -2,7 +2,7 @@ import Window from "../components/Window";
 import NavIcons from "@/components/NavIcons";
 import { useWindowManager } from "@/hooks/useWindowManager";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
-import { renderWindow } from "../utils/windowHelpers";
+import { renderWindow } from "@/utils/windowHelpers";
 export default function Index() {
   // ------------------------------------
   // State management
