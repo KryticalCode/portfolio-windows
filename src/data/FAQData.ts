@@ -1,4 +1,3 @@
-// FAQ data // move to a seperate file ???
 const faqData = [
   {
     question: "What was this website built with?",

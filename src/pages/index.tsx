@@ -9,18 +9,67 @@ import { faqData } from "@/data/FAQData";
 import AnimatedWindow from "@/components/AnimatedWindow";
 import { useWindowManager } from "@/hooks/useWindowManager";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
+import { windowConfigs, WindowConfigKey } from "@/data/windowConfigs";
 
 export default function Index() {
   // ------------------------------------
   // State management
   // ------------------------------------
+
+  // Custom hooks for managing open windows and sound effects
   const { openWindows, animatingWindows, openWindow, closeWindow } =
-    useWindowManager(); // custom hook for managing open windows and animations
+    useWindowManager();
   const { soundToggle, handleSoundToggle, handleSoundClick, handleSoundClose } =
-    useSoundEffects(); // custom hook for managing sound effects
+    useSoundEffects();
 
   // ------------------------------------
-  // Window management functions
+
+  // Render logic for each open window
+  const renderWindow = (windowId: WindowConfigKey) => {
+    const config = windowConfigs[windowId];
+    const content = getContentComponent(windowId);
+    const finalContent = config.wrapperClass ? (
+      <div className={config.wrapperClass}>{content}</div>
+    ) : (
+      content
+    );
+
+    return (
+      <AnimatedWindow isAnimating={animatingWindows.includes(windowId)}>
+        <Window
+          title={windowId}
+          width={config.width}
+          height={config.height}
+          isMovable={config.isMovable}
+          expandContent={config.expandContent}
+          onClose={() => {
+            handleSoundClose();
+            closeWindow(windowId);
+          }}
+        >
+          {finalContent}
+        </Window>
+      </AnimatedWindow>
+    );
+  };
+
+  const getContentComponent = (windowId: WindowConfigKey) => {
+    switch (windowId) {
+      case "about":
+        return <AboutContent />;
+      case "links":
+        return <LinksContent />;
+      case "projects":
+        return <ProjectsContent />;
+      case "faq":
+        return <FAQContent faqItems={faqData} />;
+      case "contact":
+        return <ContactContent />;
+      default:
+        return null;
+    }
+  };
+
   // ------------------------------------
 
   return (
@@ -51,97 +100,21 @@ export default function Index() {
       {/* ------------------------------------ */}
 
       {/* About window */}
-      {openWindows.includes("about") && ( // && if this is true, render the below window content
-        <AnimatedWindow isAnimating={animatingWindows.includes("about")}>
-          <Window
-            title="about"
-            width="50rem"
-            height="40rem"
-            isMovable={true}
-            onClose={() => {
-              handleSoundClose();
-              closeWindow("about");
-            }}
-          >
-            <AboutContent />
-          </Window>
-        </AnimatedWindow>
-      )}
+      {openWindows.includes("about") && renderWindow("about")}
 
       {/* Links window */}
-      {openWindows.includes("links") && (
-        <AnimatedWindow isAnimating={animatingWindows.includes("links")}>
-          <Window
-            title="links"
-            width="30rem"
-            height="30rem"
-            isMovable={true}
-            expandContent={true}
-            onClose={() => {
-              handleSoundClose();
-              closeWindow("links");
-            }}
-          >
-            <div className="flex justify-center items-center h-full">
-              <LinksContent />
-            </div>
-          </Window>
-        </AnimatedWindow>
-      )}
+      {openWindows.includes("links") && renderWindow("links")}
 
       {/* Projects window */}
-      {openWindows.includes("projects") && (
-        <AnimatedWindow isAnimating={animatingWindows.includes("projects")}>
-          <Window
-            title="projects"
-            width="75rem"
-            height="45rem"
-            isMovable={true}
-            onClose={() => {
-              handleSoundClose();
-              closeWindow("projects");
-            }}
-          >
-            <ProjectsContent />
-          </Window>
-        </AnimatedWindow>
-      )}
+      {openWindows.includes("projects") && renderWindow("projects")}
 
       {/* FAQ window */}
-      {openWindows.includes("faq") && (
-        <AnimatedWindow isAnimating={animatingWindows.includes("faq")}>
-          <Window
-            title="faq"
-            width="40rem"
-            height="35rem"
-            isMovable={true}
-            onClose={() => {
-              handleSoundClose();
-              closeWindow("faq");
-            }}
-          >
-            <FAQContent faqItems={faqData} />
-          </Window>
-        </AnimatedWindow>
-      )}
+      {openWindows.includes("faq") && renderWindow("faq")}
 
       {/* Contact window */}
-      {openWindows.includes("contact") && (
-        <AnimatedWindow isAnimating={animatingWindows.includes("contact")}>
-          <Window
-            title="contact"
-            width="30rem"
-            height="35rem"
-            isMovable={true}
-            onClose={() => {
-              handleSoundClose();
-              closeWindow("contact");
-            }}
-          >
-            <ContactContent />
-          </Window>
-        </AnimatedWindow>
-      )}
+      {openWindows.includes("contact") && renderWindow("contact")}
+
+      {/* ------------------------------------ */}
     </div>
   );
 }
