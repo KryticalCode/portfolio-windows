@@ -8,6 +8,7 @@ import FAQContent from "@/components/FAQContent";
 import ContactContent from "@/components/ContactContent";
 import { faqData } from "@/data/FAQData";
 import useSound from "use-sound";
+import AnimatedWindow from "@/components/AnimatedWindow";
 
 export default function Index() {
   // ------------------------------------
@@ -15,6 +16,7 @@ export default function Index() {
   // ------------------------------------
   const [openWindows, setOpenWindows] = useState<string[]>(["home"]);
   const [soundToggle, setSoundToggle] = useState<boolean>(true); // manage sound toggle on/off for website interactions
+  const [animatingWindows, setAnimatingWindows] = useState<string[]>([]); // track which windows are currently animating
 
   // ------------------------------------
   // Sound effects setup
@@ -24,7 +26,7 @@ export default function Index() {
   });
 
   const [playSoundClick] = useSound("on-click.mp3", {
-    volume: soundToggle ? 1 : 0, // play at full volume if sound is enabled
+    volume: soundToggle ? 1 : 0,
     onend: () => console.log("Sound has ended"), // debugging
   });
 
@@ -37,7 +39,7 @@ export default function Index() {
     const newSoundState = !soundToggle;
     setSoundToggle(newSoundState);
     if (newSoundState) {
-      handleSoundClose(); // play confirmation sound when turning sound on
+      handleSoundClose();
     }
   };
 
@@ -48,7 +50,7 @@ export default function Index() {
     }
   };
 
-  // possibly change this to a more specific sound efffect later
+  // possibly change this to a more specific sound efffect later for closing windows
   const handleSoundClose = () => {
     if (soundToggle) {
       playClosingSound();
@@ -59,11 +61,19 @@ export default function Index() {
   // Window management functions
   // ------------------------------------
 
-  // open new window with sound effect
+  // open new window with sound effect and animation
   const openWindow = (windowType: string) => {
     if (!openWindows.includes(windowType)) {
       handleSoundClick(); // play sound when opening window
+
+      // Add to animating windows first
+      setAnimatingWindows([...animatingWindows, windowType]);
       setOpenWindows([...openWindows, windowType]);
+
+      // Remove from animating after animation completes
+      setTimeout(() => {
+        setAnimatingWindows(animatingWindows.filter((w) => w !== windowType));
+      }, 100); // Match animation duration
     }
   };
 
@@ -92,86 +102,96 @@ export default function Index() {
       {/* ------------------------------------ */}
 
       {/* About window */}
-      {openWindows.includes("about") && (
-        <Window
-          title="about"
-          width="50rem"
-          height="40rem"
-          isMovable={true}
-          onClose={() => {
-            handleSoundClose(); // Play sound when closing the window test
-            setOpenWindows(openWindows.filter((w) => w !== "about"));
-          }}
-        >
-          <AboutContent />
-        </Window>
+      {openWindows.includes("about") && ( // && if this is true, render the below window content
+        <AnimatedWindow isAnimating={animatingWindows.includes("about")}>
+          <Window
+            title="about"
+            width="50rem"
+            height="40rem"
+            isMovable={true}
+            onClose={() => {
+              handleSoundClose();
+              setOpenWindows(openWindows.filter((w) => w !== "about"));
+            }}
+          >
+            <AboutContent />
+          </Window>
+        </AnimatedWindow>
       )}
 
       {/* Links window */}
       {openWindows.includes("links") && (
-        <Window
-          title="links"
-          width="30rem"
-          height="30rem"
-          isMovable={true}
-          expandContent={true}
-          onClose={() => {
-            handleSoundClose();
-            setOpenWindows(openWindows.filter((w) => w !== "links"));
-          }}
-        >
-          <div className="flex justify-center items-center h-full">
-            <LinksContent />
-          </div>
-        </Window>
+        <AnimatedWindow isAnimating={animatingWindows.includes("links")}>
+          <Window
+            title="links"
+            width="30rem"
+            height="30rem"
+            isMovable={true}
+            expandContent={true}
+            onClose={() => {
+              handleSoundClose();
+              setOpenWindows(openWindows.filter((w) => w !== "links"));
+            }}
+          >
+            <div className="flex justify-center items-center h-full">
+              <LinksContent />
+            </div>
+          </Window>
+        </AnimatedWindow>
       )}
 
       {/* Projects window */}
       {openWindows.includes("projects") && (
-        <Window
-          title="projects"
-          width="75rem"
-          height="45rem"
-          isMovable={true}
-          onClose={() => {
-            handleSoundClose();
-            setOpenWindows(openWindows.filter((w) => w !== "projects"));
-          }}
-        >
-          <ProjectsContent />
-        </Window>
+        <AnimatedWindow isAnimating={animatingWindows.includes("projects")}>
+          <Window
+            title="projects"
+            width="75rem"
+            height="45rem"
+            isMovable={true}
+            onClose={() => {
+              handleSoundClose();
+              setOpenWindows(openWindows.filter((w) => w !== "projects"));
+            }}
+          >
+            <ProjectsContent />
+          </Window>
+        </AnimatedWindow>
       )}
 
       {/* FAQ window */}
       {openWindows.includes("faq") && (
-        <Window
-          title="faq"
-          width="40rem"
-          height="35rem"
-          isMovable={true}
-          onClose={() => {
-            handleSoundClose();
-            setOpenWindows(openWindows.filter((w) => w !== "faq"));
-          }}
-        >
-          <FAQContent faqItems={faqData} />
-        </Window>
+        <AnimatedWindow isAnimating={animatingWindows.includes("faq")}>
+          <Window
+            title="faq"
+            width="40rem"
+            height="35rem"
+            isMovable={true}
+            onClose={() => {
+              handleSoundClose();
+              setOpenWindows(openWindows.filter((w) => w !== "faq"));
+            }}
+          >
+            <FAQContent faqItems={faqData} />
+          </Window>
+        </AnimatedWindow>
       )}
 
       {/* Contact window */}
       {openWindows.includes("contact") && (
-        <Window
-          title="contact"
-          width="30rem"
-          height="35rem"
-          isMovable={true}
-          onClose={() => {
-            handleSoundClose();
-            setOpenWindows(openWindows.filter((w) => w !== "contact"));
-          }}
-        >
-          <ContactContent />
-        </Window>
+        <AnimatedWindow isAnimating={animatingWindows.includes("contact")}>
+          <Window
+            title="contact"
+            width="30rem"
+            height="35rem"
+            isMovable={true}
+            onClose={() => {
+              handleSoundClose();
+              setOpenWindows(openWindows.filter((w) => w !== "contact"));
+            }}
+          >
+            <ContactContent />
+          </Window>
+        </AnimatedWindow>
       )}
     </div>
   );
