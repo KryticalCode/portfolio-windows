@@ -9,14 +9,15 @@ import ContactContent from "@/components/ContactContent";
 import { faqData } from "@/data/FAQData";
 import useSound from "use-sound";
 import AnimatedWindow from "@/components/AnimatedWindow";
+import { useWindowManager } from "@/hooks/useWindowManager";
 
 export default function Index() {
   // ------------------------------------
   // State management
   // ------------------------------------
-  const [openWindows, setOpenWindows] = useState<string[]>(["home"]);
+  const { openWindows, animatingWindows, openWindow, closeWindow } =
+    useWindowManager(); // custom hook for managing open windows and animations
   const [soundToggle, setSoundToggle] = useState<boolean>(true); // manage sound toggle on/off for website interactions
-  const [animatingWindows, setAnimatingWindows] = useState<string[]>([]); // track which windows are currently animating
 
   // ------------------------------------
   // Sound effects setup
@@ -61,22 +62,6 @@ export default function Index() {
   // Window management functions
   // ------------------------------------
 
-  // open new window with sound effect and animation
-  const openWindow = (windowType: string) => {
-    if (!openWindows.includes(windowType)) {
-      handleSoundClick(); // play sound when opening window
-
-      // Add to animating windows first
-      setAnimatingWindows([...animatingWindows, windowType]);
-      setOpenWindows([...openWindows, windowType]);
-
-      // Remove from animating after animation completes
-      setTimeout(() => {
-        setAnimatingWindows(animatingWindows.filter((w) => w !== windowType));
-      }, 100); // Match animation duration
-    }
-  };
-
   return (
     <div>
       {/* main home window */}
@@ -111,7 +96,7 @@ export default function Index() {
             isMovable={true}
             onClose={() => {
               handleSoundClose();
-              setOpenWindows(openWindows.filter((w) => w !== "about"));
+              closeWindow("about");
             }}
           >
             <AboutContent />
@@ -130,7 +115,7 @@ export default function Index() {
             expandContent={true}
             onClose={() => {
               handleSoundClose();
-              setOpenWindows(openWindows.filter((w) => w !== "links"));
+              closeWindow("links");
             }}
           >
             <div className="flex justify-center items-center h-full">
@@ -150,7 +135,7 @@ export default function Index() {
             isMovable={true}
             onClose={() => {
               handleSoundClose();
-              setOpenWindows(openWindows.filter((w) => w !== "projects"));
+              closeWindow("projects");
             }}
           >
             <ProjectsContent />
@@ -168,7 +153,7 @@ export default function Index() {
             isMovable={true}
             onClose={() => {
               handleSoundClose();
-              setOpenWindows(openWindows.filter((w) => w !== "faq"));
+              closeWindow("faq");
             }}
           >
             <FAQContent faqItems={faqData} />
@@ -186,7 +171,7 @@ export default function Index() {
             isMovable={true}
             onClose={() => {
               handleSoundClose();
-              setOpenWindows(openWindows.filter((w) => w !== "contact"));
+              closeWindow("contact");
             }}
           >
             <ContactContent />
