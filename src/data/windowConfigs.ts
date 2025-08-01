@@ -15,7 +15,7 @@ export interface WindowConfig {
   height: string;
   isMovable: boolean;
   expandContent?: boolean;
-  contentProps?: Record<string, any>; // e.g., { faqItems: faqData } pass string keys with any value
+  contentProps?: Record<string, unknown>; // More specific than 'any', allows any JSON-serializable value - fix for Vercel build instead of any (react strice not allowed)
   wrapperClass?: string; // optional class for wrapping content with specific style in child components / div
 }
 
