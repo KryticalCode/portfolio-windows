@@ -7,17 +7,21 @@ import {
 } from "lucide-react";
 
 interface NavIconProps {
-  openWindow: (windowType: string) => void;
+  openWindow: (windowType: string, onOpen?: () => void) => void;
+  handleSoundClick?: () => void;
 }
 
-export default function NavIcons({ openWindow }: NavIconProps) {
+export default function NavIcons({
+  openWindow,
+  handleSoundClick,
+}: NavIconProps) {
   return (
     /* Main container for nav icons */
     <div className="flex flex-wrap flex-row justify-center gap-8 mt-15">
       {/* About */}
       <div
         className="flex flex-col items-center space-y-2.5 hover:opacity-75 transition-opacity cursor-pointer"
-        onClick={() => openWindow("about")}
+        onClick={() => openWindow("about", handleSoundClick)}
       >
         <CircleUser size={55} opacity={0.6} />
         <span>about</span>
@@ -26,7 +30,7 @@ export default function NavIcons({ openWindow }: NavIconProps) {
       {/* Links */}
       <div
         className="flex flex-col items-center space-y-2.5 hover:opacity-75 transition-opacity cursor-pointer"
-        onClick={() => openWindow("links")}
+        onClick={() => openWindow("links", handleSoundClick)}
       >
         <Link size={55} opacity={0.6} />
         <span>links</span>
@@ -35,7 +39,7 @@ export default function NavIcons({ openWindow }: NavIconProps) {
       {/* Projects */}
       <div
         className="flex flex-col items-center space-y-2.5 hover:opacity-75 transition-opacity cursor-pointer"
-        onClick={() => openWindow("projects")}
+        onClick={() => openWindow("projects", handleSoundClick)}
       >
         <FolderCode size={55} opacity={0.6} />
         <span>projects</span>
@@ -44,7 +48,7 @@ export default function NavIcons({ openWindow }: NavIconProps) {
       {/* FAQ */}
       <div
         className="flex flex-col items-center space-y-2.5 hover:opacity-75 transition-opacity cursor-pointer"
-        onClick={() => openWindow("faq")}
+        onClick={() => openWindow("faq", handleSoundClick)}
       >
         <FileQuestionMark size={55} opacity={0.6} />
         <span>faq</span>
@@ -53,7 +57,7 @@ export default function NavIcons({ openWindow }: NavIconProps) {
       {/* Contact */}
       <div
         className="flex flex-col items-center space-y-2.5 hover:opacity-75 transition-opacity cursor-pointer"
-        onClick={() => openWindow("contact")}
+        onClick={() => openWindow("contact", handleSoundClick)}
       >
         <AtSign size={55} opacity={0.6} />
         <span>contact</span>

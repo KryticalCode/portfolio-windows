@@ -3,7 +3,7 @@ import { useState } from "react";
 interface WindowManager {
   openWindows: string[];
   animatingWindows: string[];
-  openWindow: (windowType: string) => void;
+  openWindow: (windowType: string, onOpen?: () => void) => void;
   closeWindow: (windowType: string) => void;
 }
 
@@ -11,8 +11,11 @@ export const useWindowManager = (): WindowManager => {
   const [openWindows, setOpenWindows] = useState<string[]>(["home"]);
   const [animatingWindows, setAnimatingWindows] = useState<string[]>([]);
 
-  const openWindow = (windowType: string) => {
+  const openWindow = (windowType: string, onOpen?: () => void) => {
     if (!openWindows.includes(windowType)) {
+      // Play sound if callback provided
+      onOpen?.();
+
       // Add to animating windows first
       setAnimatingWindows([...animatingWindows, windowType]);
       setOpenWindows([...openWindows, windowType]);
