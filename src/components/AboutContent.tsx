@@ -17,20 +17,6 @@ export default function AboutContent() {
         </p>
       </div>
 
-      {/* <div>
-        <h2>WHY make this website?</h2> <br />
-        <p>
-          This site is a personal project that I wanted to create, to not only
-          refine my skills, but to also have a place to showcase some of my work
-          throughout university and beyond.
-          <br />
-          Credit where credit is due, this sites design is inspired by a
-          youtuber "Sharlene Yap", who I stumbled across while practicing my
-          CSS/JS skills. I really liked her design and style, and thought I
-          would try to replicate it in my own way.
-        </p>
-      </div> */}
-
       <div className="flex flex-col gap-4">
         <div className="text-2xl text-amber-600 font-bold">Development</div>
         <div className="flex flex-wrap gap-2">
@@ -44,7 +30,8 @@ export default function AboutContent() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-1">
+        {/* gap-4 originally */}
         <div className="text-2xl text-amber-600 font-bold">Tools</div>
         <div className="flex flex-wrap gap-2">
           <p className="bg-amber-50 rounded-lg px-3 py-1">Visual Studio Code</p>
@@ -58,6 +45,12 @@ export default function AboutContent() {
           <p className="bg-amber-50 rounded-lg px-3 py-1">Node.js</p>
           <p className="bg-amber-50 rounded-lg px-3 py-1">React</p>
           <p className="bg-amber-50 rounded-lg px-3 py-1">Next.js</p>
+          <p className="bg-amber-50 rounded-lg px-3 py-1">Express.js</p>
+          <p className="bg-amber-50 rounded-lg px-3 py-1">MongoDB</p>
+          <p className="bg-amber-50 rounded-lg px-3 py-1">MySQL</p>
+          <p className="bg-amber-50 rounded-lg px-3 py-1">SQLite</p>
+          <p className="bg-amber-50 rounded-lg px-3 py-1">AWS</p>
+          <p className="bg-amber-50 rounded-lg px-3 py-1">Vercel</p>
         </div>
       </div>
 
