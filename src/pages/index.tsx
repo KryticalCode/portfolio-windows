@@ -1,18 +1,25 @@
 import Window from "../components/Window";
 import NavIcons from "@/components/NavIcons";
 import { useWindowManager } from "@/hooks/useWindowManager";
-import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { renderWindow } from "@/utils/windowHelpers";
-export default function Index() {
+
+interface IndexProps {
+  soundEffects: {
+    soundToggle: boolean;
+    handleSoundToggle: () => void;
+    handleSoundClick: () => void;
+    handleSoundClose: () => void;
+  };
+}
+
+export default function Index({ soundEffects }: IndexProps) {
   // ------------------------------------
   // State management
   // ------------------------------------
 
-  // Custom hooks for managing open windows and sound effects
+  // custom hooks for managing open windows (sound effects come from props)
   const { openWindows, animatingWindows, openWindow, closeWindow } =
     useWindowManager();
-  const { soundToggle, handleSoundToggle, handleSoundClick, handleSoundClose } =
-    useSoundEffects();
 
   // ------------------------------------
 
@@ -34,7 +41,7 @@ export default function Index() {
           <p>Aspiring web-developer and recent Computer Science graduate</p>
           <NavIcons
             openWindow={openWindow}
-            handleSoundClick={handleSoundClick}
+            handleSoundClick={soundEffects.handleSoundClick}
           />
         </div>
       </Window>
@@ -45,31 +52,46 @@ export default function Index() {
 
       {/* About window */}
       {openWindows.includes("about") &&
-        renderWindow("about", animatingWindows, handleSoundClose, closeWindow)}
+        renderWindow(
+          "about",
+          animatingWindows,
+          soundEffects.handleSoundClose,
+          closeWindow
+        )}
 
       {/* Links window */}
       {openWindows.includes("links") &&
-        renderWindow("links", animatingWindows, handleSoundClose, closeWindow)}
+        renderWindow(
+          "links",
+          animatingWindows,
+          soundEffects.handleSoundClose,
+          closeWindow
+        )}
 
       {/* Projects window */}
       {openWindows.includes("projects") &&
         renderWindow(
           "projects",
           animatingWindows,
-          handleSoundClose,
+          soundEffects.handleSoundClose,
           closeWindow
         )}
 
       {/* FAQ window */}
       {openWindows.includes("faq") &&
-        renderWindow("faq", animatingWindows, handleSoundClose, closeWindow)}
+        renderWindow(
+          "faq",
+          animatingWindows,
+          soundEffects.handleSoundClose,
+          closeWindow
+        )}
 
       {/* Contact window */}
       {openWindows.includes("contact") &&
         renderWindow(
           "contact",
           animatingWindows,
-          handleSoundClose,
+          soundEffects.handleSoundClose,
           closeWindow
         )}
 
