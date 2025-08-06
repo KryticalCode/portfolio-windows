@@ -17,7 +17,7 @@ export default function ProjectsContent() {
           </p>
         </div>
         {/* school project cards */}
-        <div className="flex flex-row flex-wrap gap-8 mt-6">
+        <div className="grid grid-cols-3 gap-8 mt-6 place-items-center">
           <a
             href="https://github.com/rmit-computing-technologies/Hologame"
             className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
@@ -48,6 +48,21 @@ export default function ProjectsContent() {
               Full Stack Node.js App - RMIT Assignment
             </h3>
           </a>
+          <a
+            href="https://github.com/my-airbnb-app"
+            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="github-logo.png"
+              alt="Full Stack Node.js MongoDB App"
+              className="w-full h-48 object-cover rounded-lg mb-3"
+            />
+            <h3 className="text-center break-words font-semibold text-gray-800">
+              My Airbnb App - Full Stack Node.js MongoDB App
+            </h3>
+          </a>
         </div>
       </section>
 
@@ -66,7 +81,7 @@ export default function ProjectsContent() {
           </p>
         </div>
         {/* personal project cards */}
-        <div className="flex flex-row flex-wrap gap-8 mt-6">
+        <div className="grid grid-cols-3 gap-8 mt-6 place-items-center">
           <a
             href="https://todo-app-two-psi-89.vercel.app/"
             className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
@@ -99,7 +114,7 @@ export default function ProjectsContent() {
           </a>
           <a
             href="https://github.com/KryticalCode"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
+            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-200"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -124,7 +139,7 @@ export default function ProjectsContent() {
               className="w-full h-48 object-cover rounded-lg mb-3"
             />
             <h3 className="text-center break-words font-semibold text-gray-800">
-              PROJECT TO ADD
+              PROJECT TO ADD - DESCRIPTION
             </h3>
           </a>
         </div>
@@ -132,3 +147,8 @@ export default function ProjectsContent() {
     </div>
   );
 }
+
+// To have all the cards the same width:
+// use w-80 instead of max-w-80 (for forcing fixed width)
+// Use place-items-stretch (to force cards to fit grid cells)
+// --- Will leave it as content-based sizing for now, as it looks more natural.... ---
