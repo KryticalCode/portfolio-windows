@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <div className="fixed top-4 right-4">
         <button
           onClick={soundEffects.handleSoundToggle}
-          className="w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center border-2 border-gray-200 hover:border-gray-300"
+          className="w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl cursor-pointer transition-all duration-200 flex items-center justify-center border-2 border-gray-200 hover:border-gray-300"
           aria-label={
             soundEffects.soundToggle ? "Disable sound" : "Enable sound"
           }

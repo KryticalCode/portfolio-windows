@@ -1,3 +1,47 @@
+const developmentSkills = [
+  "C#",
+  "Java",
+  "JavaScript (TypeScript)",
+  "HTML",
+  "CSS (Tailwind)",
+];
+const toolsSkills = [
+  "Visual Studio Code",
+  "Git",
+  "GitHub",
+  "Figma",
+  "Postman",
+  "Docker",
+  "Unity 2D/3D",
+  "Linux",
+  "Node.js",
+  "React",
+  "Next.js",
+  "Express.js",
+  "MongoDB",
+  "MySQL",
+  "SQLite",
+  "AWS",
+  "Vercel",
+];
+
+// component to display skills in styled badges
+// props: React passes one object containing all props
+// destructuring: { skills } - extracts 'skills' property from the props object
+// typescript: { skills: string[] } - tells TS the props object has a 'skills' property that's an array of strings
+// process: maps over skills array, creates a styled <p> for each skill
+// key prop (required): helps React efficiently update the list when it changes
+// returns: flex container with skills
+const DisplaySkills = ({ skills }: { skills: string[] }) => (
+  <div className="flex flex-wrap gap-2">
+    {skills.map((skill) => (
+      <p key={skill} className="bg-amber-50 rounded-lg px-3 py-1">
+        {skill}
+      </p>
+    ))}
+  </div>
+);
+
 export default function AboutContent() {
   return (
     <div className="w-full h-full overflow-x-hidden space-y-10.5 flex flex-col">
@@ -19,41 +63,15 @@ export default function AboutContent() {
 
       <div className="flex flex-col gap-4">
         <div className="text-2xl text-amber-600 font-bold">Development</div>
-        <div className="flex flex-wrap gap-2">
-          <p className="bg-amber-50 rounded-lg px-3 py-1">C#</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">Java</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">
-            JavaScript (TypeScript)
-          </p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">HTML</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">CSS (Tailwind)</p>
-        </div>
+        <DisplaySkills skills={developmentSkills} />
       </div>
 
+      {/* gap-4 originally */}
       <div className="flex flex-col gap-1">
-        {/* gap-4 originally */}
         <div className="text-2xl text-amber-600 font-bold">Tools</div>
-        <div className="flex flex-wrap gap-2">
-          <p className="bg-amber-50 rounded-lg px-3 py-1">Visual Studio Code</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">Git</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">GitHub</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">Figma</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">Postman</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">Docker</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">Unity 2D/3D</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">Linux</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">Node.js</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">React</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">Next.js</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">Express.js</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">MongoDB</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">MySQL</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">SQLite</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">AWS</p>
-          <p className="bg-amber-50 rounded-lg px-3 py-1">Vercel</p>
-        </div>
+        <DisplaySkills skills={toolsSkills} />
       </div>
-
+      {/* GitHub link for more info */}
       <a
         className="text-sm font-bold"
         href="https://github.com/KryticalCode/portfolio-windows/blob/main/README.md"

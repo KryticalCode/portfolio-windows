@@ -27,7 +27,7 @@ export default function ProjectsContent() {
             <img
               src="/ProgressBar.png"
               alt="Nintendogs-Like Unity Game"
-              className="w-full h-48 object-cover rounded-lg mb-3"
+              className="w-full h-48 object-fill rounded-lg mb-3"
             />
             <h3 className="text-center break-words font-semibold text-gray-800">
               Hologame - Looking Glass Display
@@ -49,18 +49,18 @@ export default function ProjectsContent() {
             </h3>
           </a>
           <a
-            href="https://github.com/my-airbnb-app"
+            href="https://github.com/KryticalCode/airbnb-mern-app"
             className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src="github-logo.png"
+              src="airbnb-mern.png"
               alt="Full Stack Node.js MongoDB App"
-              className="w-full h-48 object-cover rounded-lg mb-3"
+              className="w-full h-48 object-fill rounded-lg mb-3"
             />
             <h3 className="text-center break-words font-semibold text-gray-800">
-              My Airbnb App - Full Stack Node.js MongoDB App
+              My Airbnb App - MERN App
             </h3>
           </a>
         </div>
@@ -83,21 +83,6 @@ export default function ProjectsContent() {
         {/* personal project cards */}
         <div className="grid grid-cols-3 gap-8 mt-6 place-items-center">
           <a
-            href="https://todo-app-two-psi-89.vercel.app/"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="todo-app.png"
-              alt="to-do list app"
-              className="w-full h-48 object-cover rounded-lg mb-3"
-            />
-            <h3 className="text-center break-words font-semibold text-gray-800">
-              To-Do List App
-            </h3>
-          </a>
-          <a
             href="https://www.github.com/KryticalCode/portfolio-website"
             className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
             target="_blank"
@@ -112,6 +97,22 @@ export default function ProjectsContent() {
               (This) Portfolio Website
             </h3>
           </a>
+          <a
+            href="https://todo-app-two-psi-89.vercel.app/"
+            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="todo-app.png"
+              alt="to-do list app"
+              className="w-full h-48 object-cover rounded-lg mb-3"
+            />
+            <h3 className="text-center break-words font-semibold text-gray-800">
+              To-Do List App
+            </h3>
+          </a>
+
           <a
             href="https://github.com/KryticalCode"
             className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-200"
@@ -128,18 +129,19 @@ export default function ProjectsContent() {
             </h3>
           </a>
           <a
-            href="https://github.com/KryticalCode"
+            href="https://github.com/KryticalCode/my-website"
             className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-200"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src="github-logo.png"
-              alt="TO ADD"
-              className="w-full h-48 object-cover rounded-lg mb-3"
+              src="my-website-slide.png"
+              alt="My Portfolio Website Slideshow V1"
+              className="w-full h-48 object-fit rounded-lg mb-3"
             />
             <h3 className="text-center break-words font-semibold text-gray-800">
-              PROJECT TO ADD - DESCRIPTION
+              Portfolio Website Slideshow - Original version of my portfolio
+              [incomplete]
             </h3>
           </a>
         </div>
