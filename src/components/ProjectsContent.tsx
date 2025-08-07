@@ -1,3 +1,34 @@
+import {
+  ProjectCard,
+  schoolProjects,
+  personalProjects,
+} from "@/data/projectCards";
+
+const ProjectGrid = ({ projects }: { projects: ProjectCard[] }) => {
+  return (
+    <div className="grid grid-cols-3 gap-8 mt-6 place-items-center">
+      {projects.map((project, href) => (
+        <a
+          key={href}
+          href={project.href}
+          className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={project.src}
+            alt={project.alt}
+            className="w-full h-48 object-fill rounded-lg mb-3"
+          />
+          <h3 className="text-center break-words font-semibold text-gray-800">
+            {project.title}
+          </h3>
+        </a>
+      ))}
+    </div>
+  );
+};
+
 export default function ProjectsContent() {
   return (
     <div className=" space-y-8 ">
@@ -17,53 +48,8 @@ export default function ProjectsContent() {
           </p>
         </div>
         {/* school project cards */}
-        <div className="grid grid-cols-3 gap-8 mt-6 place-items-center">
-          <a
-            href="https://github.com/rmit-computing-technologies/Hologame"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/ProgressBar.png"
-              alt="Nintendogs-Like Unity Game"
-              className="w-full h-48 object-fill rounded-lg mb-3"
-            />
-            <h3 className="text-center break-words font-semibold text-gray-800">
-              Hologame - Looking Glass Display
-            </h3>
-          </a>
-          <a
-            href="https://github.com/rmit-fsd-2024-s1/s3625089-s3948914-a2"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="github-logo.png"
-              alt="Full Stack Node.js App"
-              className="w-full h-48 object-cover rounded-lg mb-3"
-            />
-            <h3 className="text-center break-words font-semibold text-gray-800">
-              Full Stack Node.js App - RMIT Assignment
-            </h3>
-          </a>
-          <a
-            href="https://github.com/KryticalCode/airbnb-mern-app"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="airbnb-mern.png"
-              alt="Full Stack Node.js MongoDB App"
-              className="w-full h-48 object-fill rounded-lg mb-3"
-            />
-            <h3 className="text-center break-words font-semibold text-gray-800">
-              My Airbnb App - MERN App
-            </h3>
-          </a>
-        </div>
+        <ProjectGrid projects={schoolProjects} />
+        {/* ------------------------------- */}
       </section>
 
       {/* ------------------------------- */}
@@ -81,70 +67,7 @@ export default function ProjectsContent() {
           </p>
         </div>
         {/* personal project cards */}
-        <div className="grid grid-cols-3 gap-8 mt-6 place-items-center">
-          <a
-            href="https://www.github.com/KryticalCode/portfolio-website"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/my-website.png"
-              alt="Portfolio Website"
-              className="w-full h-48 object-cover rounded-lg mb-3"
-            />
-            <h3 className="text-center break-words font-semibold text-gray-800">
-              (This) Portfolio Website
-            </h3>
-          </a>
-          <a
-            href="https://todo-app-two-psi-89.vercel.app/"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="todo-app.png"
-              alt="to-do list app"
-              className="w-full h-48 object-cover rounded-lg mb-3"
-            />
-            <h3 className="text-center break-words font-semibold text-gray-800">
-              To-Do List App
-            </h3>
-          </a>
-
-          <a
-            href="https://github.com/KryticalCode"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-200"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="github-logo.png"
-              alt="Full Stack C# Library Management System"
-              className="w-full h-48 object-cover rounded-lg mb-3"
-            />
-            <h3 className="text-center break-words font-semibold text-gray-800">
-              Full Stack C# Simple Library Management System
-            </h3>
-          </a>
-          <a
-            href="https://github.com/KryticalCode/my-website"
-            className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-200"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="my-website-slide.png"
-              alt="My Portfolio Website Slideshow V1"
-              className="w-full h-48 object-fit rounded-lg mb-3"
-            />
-            <h3 className="text-center break-words font-semibold text-gray-800">
-              Portfolio Website Slideshow - Original version of my portfolio
-              [incomplete]
-            </h3>
-          </a>
-        </div>
+        <ProjectGrid projects={personalProjects} />
       </section>
     </div>
   );

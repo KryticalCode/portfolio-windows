@@ -1,0 +1,26 @@
+export const developmentSkills = [
+  "C#",
+  "Java",
+  "JavaScript (TypeScript)",
+  "HTML",
+  "CSS (Tailwind)",
+];
+export const toolsSkills = [
+  "Visual Studio Code",
+  "Git",
+  "GitHub",
+  "Figma",
+  "Postman",
+  "Docker",
+  "Unity 2D/3D",
+  "Linux",
+  "Node.js",
+  "React",
+  "Next.js",
+  "Express.js",
+  "MongoDB",
+  "MySQL",
+  "SQLite",
+  "AWS",
+  "Vercel",
+];

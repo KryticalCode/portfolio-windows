@@ -1,29 +1,4 @@
-const developmentSkills = [
-  "C#",
-  "Java",
-  "JavaScript (TypeScript)",
-  "HTML",
-  "CSS (Tailwind)",
-];
-const toolsSkills = [
-  "Visual Studio Code",
-  "Git",
-  "GitHub",
-  "Figma",
-  "Postman",
-  "Docker",
-  "Unity 2D/3D",
-  "Linux",
-  "Node.js",
-  "React",
-  "Next.js",
-  "Express.js",
-  "MongoDB",
-  "MySQL",
-  "SQLite",
-  "AWS",
-  "Vercel",
-];
+import { developmentSkills, toolsSkills } from "../data/aboutSkills";
 
 // component to display skills in styled badges
 // props: React passes one object containing all props
