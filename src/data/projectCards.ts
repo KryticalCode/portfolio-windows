@@ -10,13 +10,13 @@ export const schoolProjects: ProjectCard[] = [
     href: "https://github.com/rmit-computing-technologies/Hologame",
     src: "/ProgressBar.png",
     alt: "Nintendogs-Like Unity Game",
-    title: "Hologame - Looking Glass Display",
+    title: "Hologame - Looking Glass Display (Private Repo)",
   },
   {
-    href: "https://github.com/rmit-fsd-2024-s1/s3625089-s3948914-a2",
-    src: "github-logo.png",
+    href: "https://github.com/KryticalCode/fullstack-employee-store",
+    src: "soil-fullstack-1.png",
     alt: "Full Stack Node.js App",
-    title: "Full Stack Node.js App - RMIT Assignment",
+    title: "Fullstack Employee Store - Docker and Node.js",
   },
   {
     href: "https://github.com/KryticalCode/airbnb-mern-app",
@@ -37,13 +37,13 @@ export const personalProjects: ProjectCard[] = [
     href: "https://todo-app-two-psi-89.vercel.app/",
     src: "todo-app.png",
     alt: "to-do list app",
-    title: "To-Do List App",
+    title: "To-Do List App (Hosted on Vercel)",
   },
   {
     href: "https://github.com/KryticalCode",
     src: "github-logo.png",
     alt: "Full Stack C# Library Management System",
-    title: "Full Stack C# Simple Library Management System",
+    title: "Full Stack C# Simple Library Management System - Work in Progress",
   },
   {
     href: "https://github.com/KryticalCode/my-website",
