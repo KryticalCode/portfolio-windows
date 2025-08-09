@@ -46,8 +46,8 @@ export const windowConfigs: Record<WindowConfigKey, WindowConfig> = {
     contentProps: { faqItems: faqData },
   },
   contact: {
-    width: "30rem",
-    height: "35rem",
+    width: "45rem",
+    height: "40rem",
     isMovable: true,
   },
 };
