@@ -42,7 +42,7 @@ export default function AboutContent() {
       </div>
 
       {/* gap-4 originally */}
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-4">
         <div className="text-2xl text-amber-600 font-bold">Tools</div>
         <DisplaySkills skills={toolsSkills} />
       </div>

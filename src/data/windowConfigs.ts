@@ -23,8 +23,8 @@ export interface WindowConfig {
 export const windowConfigs: Record<WindowConfigKey, WindowConfig> = {
   about: {
     // WindowConfig for "about" window
-    width: "50rem",
-    height: "40rem",
+    width: "53rem",
+    height: "46rem",
     isMovable: true,
   },
   links: {
