@@ -3,6 +3,7 @@ import {
   schoolProjects,
   personalProjects,
 } from "@/data/projectCards";
+import { Span } from "next/dist/trace";
 
 const ProjectGrid = ({ projects }: { projects: ProjectCard[] }) => {
   return (
@@ -23,6 +24,13 @@ const ProjectGrid = ({ projects }: { projects: ProjectCard[] }) => {
           <h3 className="text-center break-words font-semibold text-gray-800">
             {project.title}
           </h3>
+          <div className="flex flex-wrap gap-3 mt-3 justify-center">
+            {project.techStack.map((stack, index) => (
+              <span key={index} className="text-sm bg-amber-50 rounded-lg">
+                {stack}
+              </span>
+            ))}
+          </div>
         </a>
       ))}
     </div>
@@ -49,6 +57,7 @@ export default function ProjectsContent() {
         </div>
         {/* school project cards */}
         <ProjectGrid projects={schoolProjects} />
+
         {/* ------------------------------- */}
       </section>
 

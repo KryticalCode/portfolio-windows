@@ -35,7 +35,7 @@ export const windowConfigs: Record<WindowConfigKey, WindowConfig> = {
     wrapperClass: "flex justify-center items-center h-full", // centered layout for links
   },
   projects: {
-    width: "75rem",
+    width: "80rem",
     height: "45rem",
     isMovable: true,
   },
