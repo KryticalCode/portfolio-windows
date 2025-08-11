@@ -3,30 +3,32 @@ import {
   schoolProjects,
   personalProjects,
 } from "@/data/projectCards";
-import { Span } from "next/dist/trace";
 
 const ProjectGrid = ({ projects }: { projects: ProjectCard[] }) => {
   return (
-    <div className="grid grid-cols-3 gap-8 mt-6 place-items-center">
+    <div className="grid grid-cols-3 gap-8 mt-6 items-stretch">
       {projects.map((project, href) => (
         <a
           key={href}
           href={project.href}
-          className="flex flex-col items-center max-w-80 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
+          className="flex flex-col items-center w-96 h-110 bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all  duration-300 border border-gray-200"
           target="_blank"
           rel="noopener noreferrer"
         >
           <img
             src={project.src}
             alt={project.alt}
-            className="w-full h-48 object-fill rounded-lg mb-3"
+            className="w-full h-48 object-cover rounded-lg mb-3"
           />
           <h3 className="text-center break-words font-semibold text-gray-800">
             {project.title}
           </h3>
-          <div className="flex flex-wrap gap-3 mt-3 justify-center">
+          <div className="flex flex-wrap gap-3 mt-3 justify-center ">
             {project.techStack.map((stack, index) => (
-              <span key={index} className="text-sm bg-amber-50 rounded-lg">
+              <span
+                key={index}
+                className="text-sm bg-amber-50 rounded-lg px-3 py-1 border border-amber-200"
+              >
                 {stack}
               </span>
             ))}
