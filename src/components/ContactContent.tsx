@@ -20,7 +20,7 @@ export default function ContactContent() {
 
     // api call to send email
     try {
-      const response = await fetch("http://localhost:3001/api/send-email", {
+      const response = await fetch("https://api.mcirona.com/api/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
