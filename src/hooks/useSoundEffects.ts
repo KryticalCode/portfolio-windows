@@ -1,40 +1,26 @@
-import { useState } from "react";
 import useSound from "use-sound";
 
 interface SoundEffects {
-  soundToggle: boolean;
-  handleSoundToggle: () => void;
   handleSoundClick: () => void;
   handleSoundClose: () => void;
 }
 
-export const useSoundEffects = (): SoundEffects => {
-  const [soundToggle, setSoundToggle] = useState<boolean>(true); // manage sound toggle on/off for website interactions
-
+// the hook now takes the global sound toggle state as an argument
+export const useSoundEffects = (soundToggle: boolean): SoundEffects => {
   // ------------------------------------
   // Sound effects setup
   // ------------------------------------
   const [playClosingSound] = useSound("on-click.mp3", {
-    volume: soundToggle ? 1 : 0, // play at full volume if sound is enabled, otherwise muted
+    volume: soundToggle ? 1 : 0,
   });
 
   const [playSoundClick] = useSound("on-click.mp3", {
     volume: soundToggle ? 1 : 0,
-    onend: () => console.log("Sound has ended"), // debugging
   });
 
   // ------------------------------------
   // Sound control functions
   // ------------------------------------
-
-  // toggle sound on/off globally and play confirmation sound when enabling
-  const handleSoundToggle = () => {
-    const newSoundState = !soundToggle;
-    setSoundToggle(newSoundState);
-    if (newSoundState) {
-      handleSoundClose();
-    }
-  };
 
   // generic click sound function for button interactions
   const handleSoundClick = () => {
@@ -51,8 +37,6 @@ export const useSoundEffects = (): SoundEffects => {
   };
 
   return {
-    soundToggle,
-    handleSoundToggle,
     handleSoundClick,
     handleSoundClose,
   };

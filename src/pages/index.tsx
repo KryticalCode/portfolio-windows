@@ -2,26 +2,21 @@ import Window from "../components/Window";
 import NavIcons from "@/components/NavIcons";
 import { useWindowManager } from "@/hooks/useWindowManager";
 import { renderWindow } from "@/utils/windowHelpers";
+import { useSoundEffects } from "@/hooks/useSoundEffects"; // import hook directly
+import { WindowConfigKey } from "@/data/windowConfigs";
 
-interface IndexProps {
-  soundEffects: {
-    soundToggle: boolean;
-    handleSoundToggle: () => void;
-    handleSoundClick: () => void;
-    handleSoundClose: () => void;
-  };
-}
-
-export default function Index({ soundEffects }: IndexProps) {
-  // ------------------------------------
-  // State management
-  // ------------------------------------
-
-  // custom hooks for managing open windows (sound effects come from props)
+// page receives the soundToggle state from _app.tsx
+export default function Index({ soundToggle }: { soundToggle: boolean }) {
   const { openWindows, animatingWindows, openWindow, closeWindow } =
     useWindowManager();
 
-  // ------------------------------------
+  // the hook here now uses the global state passed down as a prop to control sound effects
+  const { handleSoundClick, handleSoundClose } = useSoundEffects(soundToggle);
+
+  const openWindowWithSound = (windowType: string) => {
+    handleSoundClick();
+    openWindow(windowType);
+  };
 
   return (
     <div>
@@ -39,10 +34,7 @@ export default function Index({ soundEffects }: IndexProps) {
             <span className="text-amber-500 text-6xl">i&apos;m matt</span>
           </div>
           <p>Aspiring web-developer and recent Computer Science graduate</p>
-          <NavIcons
-            openWindow={openWindow}
-            handleSoundClick={soundEffects.handleSoundClick}
-          />
+          <NavIcons openWindow={openWindowWithSound} />
         </div>
       </Window>
 
@@ -50,50 +42,18 @@ export default function Index({ soundEffects }: IndexProps) {
       {/* Open windows rendering */}
       {/* ------------------------------------ */}
 
-      {/* About window */}
-      {openWindows.includes("about") &&
-        renderWindow(
-          "about",
-          animatingWindows,
-          soundEffects.handleSoundClose,
-          closeWindow
-        )}
+      {openWindows.map((windowId) => {
+        // don't render the 'home' window again in this loop as it is already rendered above
+        // prevents duplicate rendering of the home window
+        if (windowId === "home") return null;
 
-      {/* Links window */}
-      {openWindows.includes("links") &&
-        renderWindow(
-          "links",
+        return renderWindow(
+          windowId as WindowConfigKey, // ensure windowId is a valid key
           animatingWindows,
-          soundEffects.handleSoundClose,
+          handleSoundClose, // pass the close handler
           closeWindow
-        )}
-
-      {/* Projects window */}
-      {openWindows.includes("projects") &&
-        renderWindow(
-          "projects",
-          animatingWindows,
-          soundEffects.handleSoundClose,
-          closeWindow
-        )}
-
-      {/* FAQ window */}
-      {openWindows.includes("faq") &&
-        renderWindow(
-          "faq",
-          animatingWindows,
-          soundEffects.handleSoundClose,
-          closeWindow
-        )}
-
-      {/* Contact window */}
-      {openWindows.includes("contact") &&
-        renderWindow(
-          "contact",
-          animatingWindows,
-          soundEffects.handleSoundClose,
-          closeWindow
-        )}
+        );
+      })}
 
       {/* ------------------------------------ */}
     </div>

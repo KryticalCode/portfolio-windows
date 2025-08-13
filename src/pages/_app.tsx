@@ -1,11 +1,29 @@
 import type { AppProps } from "next/app";
 import Wave from "react-wavify";
 import "../app/globals.css";
-import { useSoundEffects } from "../hooks/useSoundEffects";
+import dynamic from "next/dynamic";
+import { useState } from "react";
+import { useSoundEffects } from "@/hooks/useSoundEffects";
+
+const SoundToggle = dynamic(() => import("../components/SoundToggle"), {
+  ssr: false, // disable server-side rendering for this component, was crashing AWS beanstalk build
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   // call hooks from the top level of the component after imports
-  const soundEffects = useSoundEffects();
+
+  // global sound state is now managed here, in the common top-level component
+  const [soundToggle, setSoundToggle] = useState<boolean>(true);
+  const { handleSoundClose } = useSoundEffects(soundToggle);
+
+  // function will be passed to the toggle button to change the sound state in other components
+  const toggleSound = () => {
+    const newSoundState = !soundToggle;
+    setSoundToggle(newSoundState);
+    if (newSoundState) {
+      handleSoundClose(); // play a sound when enabling
+    }
+  };
 
   return (
     <>
@@ -29,29 +47,11 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       />
 
-      {/* Global Sound Toggle - Fixed position in corner */}
-      <div className="fixed top-4 right-4">
-        <button
-          onClick={soundEffects.handleSoundToggle}
-          className="w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl cursor-pointer transition-all duration-200 flex items-center justify-center border-2 border-gray-200 hover:border-gray-300"
-          aria-label={
-            soundEffects.soundToggle ? "Disable sound" : "Enable sound"
-          }
-        >
-          <img
-            src={
-              soundEffects.soundToggle
-                ? "/volume-enabled.png"
-                : "/volume-disabled.png"
-            }
-            alt={soundEffects.soundToggle ? "Sound Enabled" : "Sound Disabled"}
-            className="w-6 h-6"
-          />
-        </button>
-      </div>
+      {/* pass the state and the toggle function to the button */}
+      <SoundToggle soundToggle={soundToggle} handleSoundToggle={toggleSound} />
 
-      {/* All page content renders here - pass sound effects as props */}
-      <Component {...pageProps} soundEffects={soundEffects} />
+      {/* pass the state and functions down to all other pages */}
+      <Component {...pageProps} soundToggle={soundToggle} />
     </>
   );
 }
