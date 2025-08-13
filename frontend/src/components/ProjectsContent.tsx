@@ -2,7 +2,7 @@ import {
   ProjectCard,
   schoolProjects,
   personalProjects,
-} from "@/data/projectCards";
+} from "../data/projectCards";
 
 const ProjectGrid = ({ projects }: { projects: ProjectCard[] }) => {
   return (

@@ -3,7 +3,7 @@ import Wave from "react-wavify";
 import "../app/globals.css";
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import { useSoundEffects } from "@/hooks/useSoundEffects";
+import { useSoundEffects } from "../hooks/useSoundEffects";
 
 const SoundToggle = dynamic(() => import("../components/SoundToggle"), {
   ssr: false, // disable server-side rendering for this component, was crashing AWS beanstalk build

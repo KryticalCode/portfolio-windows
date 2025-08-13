@@ -1,9 +1,9 @@
 import Window from "../components/Window";
-import NavIcons from "@/components/NavIcons";
-import { useWindowManager } from "@/hooks/useWindowManager";
-import { renderWindow } from "@/utils/windowHelpers";
-import { useSoundEffects } from "@/hooks/useSoundEffects"; // import hook directly
-import { WindowConfigKey } from "@/data/windowConfigs";
+import NavIcons from "../components/NavIcons";
+import { useWindowManager } from "../hooks/useWindowManager";
+import { renderWindow } from "../utils/windowHelpers";
+import { useSoundEffects } from "../hooks/useSoundEffects"; // import hook directly
+import { WindowConfigKey } from "../data/windowConfigs";
 
 // page receives the soundToggle state from _app.tsx
 export default function Index({ soundToggle }: { soundToggle: boolean }) {

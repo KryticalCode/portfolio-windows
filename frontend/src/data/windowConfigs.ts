@@ -1,4 +1,4 @@
-import { faqData } from "@/data/FAQData";
+import { faqData } from "./FAQData";
 
 // keys for window configurations
 // these will be the only valid keys for windowConfigs

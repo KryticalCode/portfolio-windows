@@ -1,12 +1,12 @@
 import Window from "../components/Window";
-import AboutContent from "@/components/AboutContent";
-import AnimatedWindow from "@/components/AnimatedWindow";
-import ContactContent from "@/components/ContactContent";
-import FAQContent from "@/components/FAQContent";
-import LinksContent from "@/components/LinksContent";
-import ProjectsContent from "@/components/ProjectsContent";
-import { faqData } from "@/data/FAQData";
-import { WindowConfigKey, windowConfigs } from "@/data/windowConfigs";
+import AboutContent from "../components/AboutContent";
+import AnimatedWindow from "../components/AnimatedWindow";
+import ContactContent from "../components/ContactContent";
+import FAQContent from "../components/FAQContent";
+import LinksContent from "../components/LinksContent";
+import ProjectsContent from "../components/ProjectsContent";
+import { faqData } from "../data/FAQData";
+import { WindowConfigKey, windowConfigs } from "../data/windowConfigs";
 
 // Render logic for each open window
 function renderWindow(
