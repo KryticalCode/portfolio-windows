@@ -50,6 +50,12 @@ const limiter = rateLimit({
 });
 
 // --- routes setup ---
+
+// health check route for Elastic Beanstalk Load Balancer
+app.get("/", (req, res) => {
+  res.status(200).send("Ok");
+});
+
 // POST /api/send-email
 // handles sending emails from the contact form in the frontend
 app.post(
