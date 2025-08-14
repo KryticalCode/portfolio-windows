@@ -1,11 +1,5 @@
 import { useState } from "react";
-
-interface WindowManager {
-  openWindows: string[];
-  animatingWindows: string[];
-  openWindow: (windowType: string, onOpen?: () => void) => void;
-  closeWindow: (windowType: string) => void;
-}
+import { WindowManager } from "../types";
 
 export const useWindowManager = (): WindowManager => {
   const [openWindows, setOpenWindows] = useState<string[]>(["home"]);

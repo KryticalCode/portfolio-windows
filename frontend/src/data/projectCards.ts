@@ -22,14 +22,14 @@ export const schoolProjects: ProjectCard[] = [
   },
   {
     href: "https://github.com/KryticalCode/fullstack-employee-store",
-    src: "soil-fullstack-1.png",
+    src: "/soil-fullstack-1.png",
     alt: "Full Stack Node.js App",
     title: "Full Stack Employee Store",
     techStack: ["Docker", "MySQL", "React", "Node.js", "Bootstrap CSS"],
   },
   {
     href: "https://github.com/KryticalCode/airbnb-mern-app",
-    src: "airbnb-mern.png",
+    src: "/airbnb-mern.png",
     alt: "Full Stack Node.js MongoDB App",
     title: "My Airbnb Booking App",
     techStack: ["MongoDB", "Express.js", "React", "Node.js"],
@@ -56,7 +56,7 @@ export const personalProjects: ProjectCard[] = [
   },
   {
     href: "https://todo-app-two-psi-89.vercel.app/",
-    src: "todo-app.png",
+    src: "/todo-app.png",
     alt: "to-do list app",
     title: "To-Do List App",
     techStack: [
@@ -70,7 +70,7 @@ export const personalProjects: ProjectCard[] = [
   },
   {
     href: "https://github.com/KryticalCode/my-website",
-    src: "my-website-slide.png",
+    src: "/my-website-slide.png",
     alt: "My Portfolio Website Slideshow V1",
     title:
       "Portfolio Website Slideshow - Original version of my portfolio [incomplete]",
@@ -78,7 +78,7 @@ export const personalProjects: ProjectCard[] = [
   },
   {
     href: "https://github.com/KryticalCode",
-    src: "github-logo.png",
+    src: "/github-logo.png",
     alt: "Full Stack C# Library Management System",
     title: "Full Stack C# Simple Library Management System - Work in Progress",
     techStack: ["C#", "ASP.NET Core"],

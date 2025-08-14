@@ -3,10 +3,11 @@ import {
   schoolProjects,
   personalProjects,
 } from "../data/projectCards";
+import Image from "next/image";
 
 const ProjectGrid = ({ projects }: { projects: ProjectCard[] }) => {
   return (
-    <div className="grid grid-cols-3 gap-8 mt-6 items-stretch">
+    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-8 mt-6 items-stretch">
       {projects.map((project, href) => (
         <a
           key={href}
@@ -15,11 +16,19 @@ const ProjectGrid = ({ projects }: { projects: ProjectCard[] }) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img
-            src={project.src}
-            alt={project.alt}
-            className="w-full h-48 object-cover rounded-lg mb-3"
-          />
+          {/* Relative container for the image, to maintain aspect ratio */}
+          <div className="relative w-full h-48 mb-3">
+            <Image // Next.js Image component to optimize images => automatically resizes and optimizes images for different screen sizes
+              src={project.src}
+              fill // fill prop which allows the image to fill the parent container using absolute positioning as the parent container is relative
+              alt={project.alt}
+              // (max-width: 768px) 100vw → Mobile: image takes full screen width
+              // (max-width: 1024px) 50vw → Tablet: image takes half screen width
+              // 33vw → Desktop: image takes 1/3 screen width (since there are 3 columns)
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover rounded-lg" // object-cover to maintain aspect ratio and cover the entire container
+            />
+          </div>
           <h3 className="text-center break-words font-semibold text-gray-800">
             {project.title}
           </h3>

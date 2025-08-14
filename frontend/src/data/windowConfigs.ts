@@ -1,31 +1,21 @@
 import { faqData } from "./FAQData";
-
-// keys for window configurations
-// these will be the only valid keys for windowConfigs
-export type WindowConfigKey =
-  | "about"
-  | "links"
-  | "projects"
-  | "faq"
-  | "contact";
-
-//
-export interface WindowConfig {
-  width: string;
-  height: string;
-  isMovable: boolean;
-  expandContent?: boolean;
-  contentProps?: Record<string, unknown>; // More specific than 'any', allows any JSON-serializable value - fix for Vercel build instead of any (react strice not allowed)
-  wrapperClass?: string; // optional class for wrapping content with specific style in child components / div
-}
+import { WindowConfig, WindowConfigKey } from "../types";
 
 // union type for window configurations
 export const windowConfigs: Record<WindowConfigKey, WindowConfig> = {
+  home: {
+    width: "50rem",
+    height: "35rem",
+    isMovable: false,
+    expandContent: true,
+    responsive: true,
+  },
   about: {
     // WindowConfig for "about" window
     width: "53rem",
     height: "46rem",
     isMovable: true,
+    responsive: true,
   },
   links: {
     width: "30rem",
@@ -33,28 +23,25 @@ export const windowConfigs: Record<WindowConfigKey, WindowConfig> = {
     isMovable: true,
     expandContent: true,
     wrapperClass: "flex justify-center items-center h-full", // centered layout for links
+    responsive: false,
   },
   projects: {
     width: "80rem",
     height: "45rem",
     isMovable: true,
+    responsive: true,
   },
   faq: {
     width: "40rem",
     height: "35rem",
     isMovable: true,
     contentProps: { faqItems: faqData },
+    responsive: true,
   },
   contact: {
     width: "45rem",
-    height: "40rem",
+    height: "45rem",
     isMovable: true,
+    responsive: true,
   },
 };
-
-// Record<WindowConfigKey, WindowConfig>
-//            ↑                 ↑
-//        Key type         Value type
-//       (the names)      (the config objects)
-
-// allows for flexible contentProps

@@ -1,9 +1,9 @@
-import Window from "../components/Window";
-import NavIcons from "../components/NavIcons";
+import { renderWindow } from "../utils/index";
+import { WindowConfigKey } from "../types/index";
 import { useWindowManager } from "../hooks/useWindowManager";
-import { renderWindow } from "../utils/windowHelpers";
-import { useSoundEffects } from "../hooks/useSoundEffects"; // import hook directly
-import { WindowConfigKey } from "../data/windowConfigs";
+import { useSoundEffects } from "../hooks/useSoundEffects";
+
+import React from "react";
 
 // page receives the soundToggle state from _app.tsx
 export default function Index({ soundToggle }: { soundToggle: boolean }) {
@@ -20,23 +20,14 @@ export default function Index({ soundToggle }: { soundToggle: boolean }) {
 
   return (
     <div>
-      {/* main home window */}
-      <Window
-        title="home"
-        width="50rem"
-        height="35rem"
-        isMovable={false}
-        expandContent={true}
-      >
-        <div className="flex-1 h-full justify-center items-center flex flex-col text-center">
-          <div className=" p-5 flex flex-row gap-6 items-center ">
-            <span className="text-6xl">hi!</span>
-            <span className="text-amber-500 text-6xl">i&apos;m matt</span>
-          </div>
-          <p>Aspiring web-developer and recent Computer Science graduate</p>
-          <NavIcons openWindow={openWindowWithSound} />
-        </div>
-      </Window>
+      {/* render main home window using windowHelper*/}
+      {renderWindow(
+        "home",
+        animatingWindows,
+        handleSoundClose,
+        closeWindow,
+        openWindowWithSound
+      )}
 
       {/* ------------------------------------ */}
       {/* Open windows rendering */}
@@ -51,7 +42,8 @@ export default function Index({ soundToggle }: { soundToggle: boolean }) {
           windowId as WindowConfigKey, // ensure windowId is a valid key
           animatingWindows,
           handleSoundClose, // pass the close handler
-          closeWindow
+          closeWindow,
+          undefined // don't pass openWindow here as it's not needed for other windows besides 'home'
         );
       })}
 

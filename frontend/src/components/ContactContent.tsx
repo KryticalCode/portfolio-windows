@@ -80,10 +80,10 @@ export default function ContactContent() {
           className="border border-gray-300 rounded-lg px-4 py-2 w-full"
         />
         <textarea
-          placeholder="Send me a message!"
+          placeholder={`Send me a message!\n[Message must be 20-600 characters long]`}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="border border-gray-300 rounded-lg px-4 py-2 w-full h-28"
+          className="border border-gray-300 rounded-lg px-4 py-2 w-full h-40 resize-none"
         />
         <button
           type="submit"

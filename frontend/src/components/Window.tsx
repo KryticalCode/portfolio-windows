@@ -1,15 +1,9 @@
-import Draggable from "react-draggable";
 import { useRef } from "react";
-
-interface WindowProps {
-  title: string;
-  children: React.ReactNode;
-  width?: string;
-  height?: string;
-  isMovable?: boolean;
-  onClose?: () => void;
-  expandContent?: boolean; // New prop for content expansion
-}
+import { WindowProps } from "../types";
+import WindowTitleBar from "./WindowTitleBar";
+import WindowContent from "./WindowContent";
+import useResponsiveWindow from "../hooks/useResponsiveWindow";
+import DraggableWrapper from "./DraggableWrapper";
 
 export default function Window({
   title,
@@ -19,10 +13,23 @@ export default function Window({
   isMovable = false,
   onClose,
   expandContent = false, // Default to false
+  responsive = false, // true : mobile = full screen, desktop = width and height props || false : always use width and height props
 }: WindowProps) {
-  const nodeRef = useRef(null);
+  // ----------- log props for debug -----------
+  // console.log(`Window component recieved:`, {
+  //   title,
+  //   width,
+  //   height,
+  //   responsive,
+  // });
+  // --------------- end debug -------------------
+  //
+  // create a ref (which is a mutable object) to attach to the draggable node -> this is required by react-draggable and allows it to manage the DOM node directly
+  const nodeRef = useRef<HTMLDivElement>(null);
+  // useResponsiveWindow custom hook to handle the responsive logic
+  const { styles } = useResponsiveWindow(responsive, width, height);
 
-  const WindowContent = (
+  const WindowContainer = (
     <div
       ref={nodeRef}
       className={`
@@ -30,51 +37,21 @@ export default function Window({
         ${
           isMovable
             ? "absolute"
-            : "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            : "fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2"
         }
+        ${responsive ? "w-[95vw] h-[90vh] lg:w-auto lg:h-auto" : ""}
       `}
-      style={{ width, height }}
+      style={styles}
     >
-      {/* Title Bar */}
-      <div className="bg-gray-600 text-white px-6 py-3 rounded-t-lg h-13 flex justify-between items-center text-m font-medium cursor-move">
-        <span>{title}</span>
-        {onClose && (
-          <button
-            onClick={onClose}
-            className="text-white hover:text-gray-300 text-lg leading-none bg-transparent border-none cursor-pointer"
-          >
-            [×]
-          </button>
-        )}
-      </div>
-
-      {/* Content */}
-      {/* Will keep flex-col for consistent layout, can override with specific styles in child components
-      if required */}
-      <div
-        className={`flex flex-col p-6 bg-white overflow-y-auto ${
-          expandContent ? "flex-1" : ""
-        }`}
-      >
-        {children}
-      </div>
+      <WindowTitleBar title={title} isMovable={isMovable} onClose={onClose} />
+      <WindowContent expandContent={expandContent}>{children}</WindowContent>
     </div>
   );
 
-  // Only wrap movable windows with Draggable
-  if (isMovable) {
-    return (
-      <Draggable
-        nodeRef={nodeRef}
-        handle=".cursor-move"
-        bounds="body"
-        defaultPosition={{ x: 100, y: 100 }}
-      >
-        {WindowContent}
-      </Draggable>
-    );
-  }
-
   // Return non-draggable window for static windows (like home)
-  return WindowContent;
+  return (
+    <DraggableWrapper isMovable={isMovable} nodeRef={nodeRef}>
+      {WindowContainer}
+    </DraggableWrapper>
+  );
 }
