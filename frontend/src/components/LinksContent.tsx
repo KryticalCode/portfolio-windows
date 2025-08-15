@@ -11,7 +11,7 @@ export default function LinksContent() {
       </a>
 
       <a
-        href="https://www.linkedin.com/"
+        href="https://www.linkedin.com/in/matthew-cirona-3aaa1137a"
         className="flex flex-col items-center space-y-2.5"
         target="_blank"
       >
