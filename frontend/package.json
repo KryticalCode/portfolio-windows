@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy-s3": "npm run build && cross-env S3_BUCKET_NAME=${S3_BUCKET_NAME} npm run s3-sync",
+    "s3-sync": "aws s3 sync ./out s3://${S3_BUCKET_NAME}/ --delete --cache-control 'max-age=31536000' && aws s3 cp ./out/index.html s3://${S3_BUCKET_NAME}/index.html --cache-control 'max-age=0, no-cache, no-store, must-revalidate' --content-type 'text/html'"
   },
   "dependencies": {
     "lucide-react": "^0.525.0",
@@ -23,6 +25,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "15.4.3",
     "tailwindcss": "^4",

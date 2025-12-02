@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-// leave empty for SSR, or following to build stati webstie in /out
+// leave empty for SSR, or following to build static website in /out
 const nextConfig: NextConfig = {
   output: "export",
   distDir: "out",
