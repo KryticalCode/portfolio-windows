@@ -36,8 +36,13 @@ export default function Window({
         flex flex-col bg-white border-2 border-gray-300 rounded-lg shadow-lg z-10
         ${
           isMovable
-            ? "absolute"
-            : "fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2"
+            ? // On desktop: absolute positioning (let react-draggable handle it)
+              // On mobile: fixed and centered
+              window.innerWidth < 1024
+              ? "fixed top-[50%] left-[50%] transform -translate-x-1/2 "
+              : "absolute"
+            : // Non-movable (home): always fixed and centered
+              "fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2"
         }
         ${responsive ? "w-[95vw] h-[90vh] lg:w-auto lg:h-auto" : ""}
       `}

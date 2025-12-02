@@ -21,9 +21,9 @@ export const windowConfigs: Record<WindowConfigKey, WindowConfig> = {
     width: "30rem",
     height: "30rem",
     isMovable: true,
-    expandContent: true,
+    expandContent: true, // expands content to fill / center the window
     wrapperClass: "flex justify-center items-center h-full", // centered layout for links
-    responsive: false,
+    responsive: true, // for mobile view , it will be full screen (adjust if needed)
   },
   projects: {
     width: "80rem",
